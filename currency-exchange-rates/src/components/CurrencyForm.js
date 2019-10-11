@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchRates } from '../actions';
+import { fetchRates, updateAmount } from '../actions';
 
 
 
@@ -14,18 +14,32 @@ console.log('these are the props from the currency form', props)
 
     const handleSubmit = e => {
         e.preventDefault();
-
     }
+
+    const handleChange = e => {
+        props.updateAmount(e.target.value)
+    }
+    // const handleClick = e => {
+    //     e.preventDefault();
+    //     props.updateAmount(props.amount);
+        
+    //     console.log('this is my handleclick props.amount', props.amount)
+    // }
 
     if (props.isFetching) {
         return <h2>Loading Your Currency Conversion...</h2>;
       }
 
     return (
-        <div>
+        <div className='form-container'>
             <form onSubmit={handleSubmit}>
                 <label>$
-                <input type='number'/> USD
+                <input 
+                    type='number'
+                    name='amount'
+                    value={props.amount}
+                    onChange={handleChange}
+                /> USD
                 </label>
                 
                 {/* <label>Select Currency</label>
@@ -37,7 +51,7 @@ console.log('these are the props from the currency form', props)
              {/* </select> */}
 
             </form>
-            <button type='submit'>Convert</button>
+            {/* <button onClick={handleClick}>Convert</button> */}
         </div>
     )
 }
@@ -49,4 +63,4 @@ const mapsStateToProps = state => {
     }
 }
 
-export default connect(mapsStateToProps, { fetchRates })(CurrencyForm);
+export default connect(mapsStateToProps, { fetchRates, updateAmount })(CurrencyForm);

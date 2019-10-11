@@ -1,4 +1,4 @@
-import { START_FETCHING, FETCH_SUCCESS, FETCH_FAILURE } from '../actions';
+import { START_FETCHING, FETCH_SUCCESS, FETCH_FAILURE, UPDATE_AMOUNT } from '../actions';
 
 
 
@@ -24,10 +24,18 @@ export const reducer = (state = initialState, action) => {
         case FETCH_SUCCESS:
             return {
                 ...state, //return state
-                amount: action.payload,
+                amount: 0,
                 rates: action.payload,
                 isLoading: false,
                 error: ''
+            }
+        case UPDATE_AMOUNT:
+            return{
+                ...state,
+                amount: action.payload,
+                isLoading: false,
+                error: ''
+
             }
         case FETCH_FAILURE:
             return {
