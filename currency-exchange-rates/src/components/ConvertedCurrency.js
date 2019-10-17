@@ -18,7 +18,9 @@ const ConvertedCurrency = props => {
 const mapsStateToProps = state => {
     return {
         amount: state.amount,
-        rates: state.rates
+        rates: state.rates,
+        isFetching: state.isFetching,
+        error: state.error
     }
 }
 

@@ -12,6 +12,11 @@ console.log('these are the props from the currency form', props)
         props.fetchRates();
     }, [])
 
+    if (props.isFetching) {
+        console.log('this is my loading props',props.isFetching)
+        return <h2>Loading Your Currency Conversion...</h2>;
+      }
+
     const handleSubmit = e => {
         e.preventDefault();
     }
@@ -26,9 +31,7 @@ console.log('these are the props from the currency form', props)
     //     console.log('this is my handleclick props.amount', props.amount)
     // }
 
-    if (props.isFetching) {
-        return <h2>Loading Your Currency Conversion...</h2>;
-      }
+    
 
     return (
         <div className='form-container'>
@@ -59,7 +62,8 @@ console.log('these are the props from the currency form', props)
 const mapsStateToProps = state => {
     return {
         amount: state.amount,
-
+        isFetching: state.isFetching,
+        error: state.error
     }
 }
 

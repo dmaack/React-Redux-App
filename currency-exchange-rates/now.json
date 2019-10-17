@@ -1,0 +1,8 @@
+{
+    "version": 2,
+    "name": "currency-exchange-rates",
+    "builds": [{ "src": "currency-exchange-rates/package.json", "use": "@now/static-build", "config": {"distDir": "build"} }],
+    "routes": [
+        { "src": "/(.*)", "dest": "currency-exchange-rates/$1" }
+    ]
+}

@@ -9,6 +9,8 @@ const ConvertedCurrencyList = props => {
     const keys = Object.keys(props.rates).sort();
     console.log('these are the keys', keys)
 
+   
+
     return (
         <div>
             <h2>Converted Currencies</h2>
@@ -30,7 +32,9 @@ const ConvertedCurrencyList = props => {
 const mapsStateToProps = state => {
     return {
         amount: state.amount,
-        rates: state.rates
+        rates: state.rates,
+        isFetching: state.isFetching,
+        error: state.error
     }
 }
 

@@ -14,7 +14,7 @@ export const fetchRates = () => dispatch => {
       console.log('this is the data from api request', res)
       dispatch({ type: FETCH_SUCCESS, payload: res.data.rates })
   })
-  .catch(err => dispatch({ type: FETCH_FAILURE, payload: err.res }))
+  .catch(err => dispatch({ type: FETCH_FAILURE, payload: err }))
 }
 
 export const updateAmount = amount => dispatch => {
